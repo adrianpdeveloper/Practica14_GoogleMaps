@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Practica7_Viewpager</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--ONBOARDING ACTIVITY-->
+    <string name="onboarding_title">Tu App de Viajes</string>
+    <string name="onboarding_infotext">Hola, estamos buscando a millones de usuarios con inquietudes y ganas de viajar. Si eres tu? No lo dudes accede a nuestra app y descubriras miles de destinos y facilidades para alquilar coches, ver el tiempo...</string>
+    <string name="button_next">Next</string>
+    <string name="button_skip">Skip</string>
+    <string name="button_login">Log in</string>
+    <string name="onboarding2_title">Find Your Match!</string>
+    <string name="onboarding2_infotext">We\'ve helped millions across the nation find their perfect match... and you\'re next!</string>
+    <string name="onboarding3_title">Find the Perfect Roommate</string>
+    <string name="onboarding3_infotext">We\'ve helped millions across the nation find their perfect match... and you\'re next!</string>
+
+    <!--HOME ACTIVITY-->
+    <string name="home_title">Upcoming meetups</string>
+    <string name="home_card1_title">City of Los Angeles</string>
+    <string name="home_card1_subtitle">USA, Los Angeles - 2 Weeks</string>
+    <string name="home_card2_title">Beach vacation</string>
+    <string name="home_card2_subtitle">Madives - 3 Weeks</string>
+    <string name="home_activity_title">Upcoming meetups</string>
+
+    <!--LOGIN ACTIVITY-->
+    <string name="main_activity_title">Login</string>
+    <string name="main_activity_login_il_hint">Login</string>
+    <string name="main_activity_password_il_hint">Password</string>
+    <string name="main_activity_login_button">Login</string>
+    <string name="main_activity_tv1">Forgot password</string>
+    <string name="main_activity_tv2_get_new">Get new</string>
+    <string name="main_activity_tv3">Do you have an account?</string>
+    <string name="main_activity_tv4_create_new">Create new</string>
+    <string name="main_activity_snackbar_not_available_function">This function will be available in future versions.</string>
+    <string name="main_activity_login_failed">Fallo en el login. Revisa los parámetros.</string>
+
+    <!-- REGISTER ACTIVITY -->
+    <string name="register_activity_name_inputtext_hint">¿Como te llamas?</string>
+    <string name="register_activity_password_inputtext_hint">Contraseña</string>
+    <string name="register_activity_age_inputtext_hint">¿Cuantos años tienes?</string>
+    <string name="register_activity_button">Me apunto</string>
+    <string name="register_activity_privacidad">Política de Privacidad</string>
+    <string name="register_activity_condiciones">Ver Condiciones</string>
+    <array name="register_activity_age_inputtext_options">
+        <item>0-5</item>
+        <item>6-11</item>
+        <item>12-17</item>
+        <item>@string/mayor_de_edad</item>
+    </array>
+    <string name="mayor_de_edad">18-99</string>
+    <string name="set_error_name_surname_input">Los caracteres \'@\' y \'!\' no estan permitidos.</string>
+    <string name="set_error_age_input">Esta app no es para ti.</string>
+    <string name="register_activity_toolbar_title">Registro</string>
+    <string name="eurodisney_menu">Eurodisney</string>
+    <string name="coche_menu">Coche</string>
+    <string name="rent_car_fragment">Alquilar coche</string>
+    <string name="onboarding_content_fragment">onboarding_content_fragment\n</string>
+    <string name="login_fragment">login_fragment</string>
+    <string name="register_fragment">register_fragment</string>
+</resources>

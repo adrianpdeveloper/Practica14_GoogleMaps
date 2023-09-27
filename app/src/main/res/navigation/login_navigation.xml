@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/login_navigation"
+    app:startDestination="@+id/onboarding_content">
+
+    <fragment
+        android:id="@+id/onboarding_content"
+        android:name="com.example.practica10_jetpacknavigation.login.onBoarding.ContentFragment"
+        android:label="@string/onboarding_content_fragment"
+        >
+        <action
+            android:id="@+id/toLogin"
+            app:destination="@+id/login_fragment"></action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.example.practica10_jetpacknavigation.login.login.LoginFragment"
+        android:label="@string/login_fragment"
+        >
+        <action
+            android:id="@+id/toRegister"
+            app:destination="@+id/register_fragment"/>
+        <argument
+            android:name="user_key"
+            app:argType="com.example.practica10_jetpacknavigation.model.User"
+            />
+        <action
+            android:id="@+id/toHome"
+            app:destination="@+id/homeFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/register_fragment"
+        android:name="com.example.practica10_jetpacknavigation.login.register.RegisterFragment"
+        android:label="@string/register_fragment"
+        >
+    <action
+        android:id="@+id/toLogin2"
+        app:destination="@+id/login_fragment"/></fragment>
+</navigation>

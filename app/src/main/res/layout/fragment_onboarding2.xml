@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OnBoarding.fragments.OnBoardingFragment2"
+    android:background="@color/onboarding2_background">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/onboarding_title"
+            style="@style/onboarding_activity_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="start"
+            android:text="@string/onboarding2_title"
+            app:layout_constraintBottom_toTopOf="@+id/onboarding_infotext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/onboarding_infotext"
+            style="@style/onboarding_activity_infotext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginVertical="8dp"
+            android:text="@string/onboarding2_infotext"
+            android:textAlignment="viewStart"
+            app:layout_constraintBottom_toTopOf="@+id/onboarding_image_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/onboarding_title" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/onboarding_image_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/viewpager_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/onboarding_infotext" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/onboarding_skip_btn"
+            style="@style/skip_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_skip"
+
+            app:backgroundTintMode="multiply"
+            android:background="@drawable/onboarding2_skip_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/onboarding_next_btn_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/onboarding_image_2"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/onboarding_next_btn_2"
+            style="@style/next_btn2"
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_next"
+            android:background="#000000"
+            app:backgroundTintMode="multiply"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/onboarding_skip_btn"
+            app:layout_constraintTop_toTopOf="@+id/onboarding_skip_btn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
