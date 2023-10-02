@@ -70,11 +70,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void locationPermission() {
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(this,permisos, REQUEST_CODE_LOCATION_PERMISSION);
-
+            //Pide los permisos necesarios
+            ActivityCompat.requestPermissions(this,permisos, REQUEST_CODE_LOCATION_PERMISSION);
         }else{
 
         }
@@ -175,9 +174,12 @@ public class HomeActivity extends AppCompatActivity {
         return position;
     }
 
+
+    //Maneja resultados de peticiones de permisos.
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //Maneja resultado de la peticion de permiso de localizacion.
         if (requestCode == REQUEST_CODE_LOCATION_PERMISSION){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
 
