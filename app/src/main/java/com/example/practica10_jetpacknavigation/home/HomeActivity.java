@@ -8,8 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import com.example.practica10_jetpacknavigation.R;
@@ -24,6 +28,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
@@ -63,10 +69,43 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getNameAndPass();
+        showNotification();
         //inflateFragment();
         locationPermission();
         viewPager();
         listeners();
+    }
+
+    private void showNotification() {
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+            //Comprobar si la version es compatible
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                String id = "my_channel_01";
+                //NotificationManager
+                NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+
+                //Canal de notificaciones
+                NotificationChannel channel = new NotificationChannel(id, "chanelName", NotificationManager.IMPORTANCE_DEFAULT);
+                channel.enableVibration(true);
+
+                notificationManagerCompat.createNotificationChannel(channel);
+
+
+            Bitmap imgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.notification_img);
+
+            //Crear notificación
+            NotificationCompat.Builder noBuilder = new NotificationCompat.Builder(this, id)
+                    .setContentTitle("Bienvenido " + user.getUsername())
+                    .setContentText("Nos alegra verte en este paraíso.")
+                    .setSmallIcon(R.drawable.air_plain)
+                    .setLargeIcon(imgBitmap);
+
+
+            notificationManagerCompat.notify(1, noBuilder.build());
+            }
+        }
+
     }
 
     private void locationPermission() {
