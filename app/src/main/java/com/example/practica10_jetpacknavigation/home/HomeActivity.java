@@ -24,7 +24,6 @@ import android.net.Uri;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -36,7 +35,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 
 import com.example.practica10_jetpacknavigation.databinding.ActivityHomeBinding;
-import com.example.practica10_jetpacknavigation.home.fragments.HomeFragment;
+import com.example.practica10_jetpacknavigation.home.fragments.home_fragment_1.HomeFragment;
 import com.example.practica10_jetpacknavigation.home.viewpager.HomePageAdapter;
 import com.example.practica10_jetpacknavigation.model.User;
 import com.google.android.material.tabs.TabLayout;
@@ -47,6 +46,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
+    private static final int REQUEST_CODE_POST_NOTIFICATIONS_PERMISSION = 2;
     private ActivityHomeBinding binding;
     private String name;
     private User user;
@@ -79,17 +79,21 @@ public class HomeActivity extends AppCompatActivity {
     private void showNotification() {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+            Log.i("Info", "Permiso concedido");
             //Comprobar si la version es compatible
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                Log.i("Info", "Version correcta");
                 String id = "my_channel_01";
                 //NotificationManager
                 NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
 
                 //Canal de notificaciones
-                NotificationChannel channel = new NotificationChannel(id, "chanelName", NotificationManager.IMPORTANCE_DEFAULT);
+                NotificationChannel channel = new NotificationChannel(id, "chanelName", NotificationManager.IMPORTANCE_HIGH);
                 channel.enableVibration(true);
 
+
                 notificationManagerCompat.createNotificationChannel(channel);
+
 
 
             Bitmap imgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.notification_img);
@@ -104,6 +108,9 @@ public class HomeActivity extends AppCompatActivity {
 
             notificationManagerCompat.notify(1, noBuilder.build());
             }
+        }else {
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.POST_NOTIFICATIONS},REQUEST_CODE_POST_NOTIFICATIONS_PERMISSION);
+            Log.i("Info", "Permiso no concedido");
         }
 
     }
