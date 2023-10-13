@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.practica10_jetpacknavigation.home.fragments.HomeFragment"
+        android:name="com.example.practica10_jetpacknavigation.home.fragments.home_fragment_1.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 </navigation>

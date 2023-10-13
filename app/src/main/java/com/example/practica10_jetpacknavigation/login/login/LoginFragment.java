@@ -19,13 +19,22 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.practica10_jetpacknavigation.R;
+import com.example.practica10_jetpacknavigation.Service.HotelService;
+import com.example.practica10_jetpacknavigation.Service.LoginService;
 import com.example.practica10_jetpacknavigation.databinding.FragmentLoginBinding;
 import com.example.practica10_jetpacknavigation.home.HomeActivity;
 import com.example.practica10_jetpacknavigation.login.LoginActivity;
 import com.example.practica10_jetpacknavigation.login.register.RegisterFragment;
+import com.example.practica10_jetpacknavigation.model.Hotel.HotelResponse;
 import com.example.practica10_jetpacknavigation.model.User;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginFragment extends Fragment {
 
@@ -33,6 +42,8 @@ public class LoginFragment extends Fragment {
     private String name;
     private String password;
     NavController navController;
+
+    private static LoginService apiService;
 
     User user;
     Bundle bundle;
@@ -162,10 +173,8 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (name != null && password != null){
-                    bundle = new Bundle();
-                    bundle.putParcelable(KEY_USER, user);
-                    Intent intent = new Intent(getContext(), HomeActivity.class).putExtra(KEY_USER_BUNDLE, bundle);
-                    startActivity(intent);
+                    postService();
+
 
                     //navController.navigate(R.id.toHome);
                     Log.i("Hola", "Siguiente Actividad");
@@ -175,6 +184,35 @@ public class LoginFragment extends Fragment {
             }
         });
 
+
+    }
+
+    //Crea la peticion
+    private void postService() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://01394d44-8918-4a1d-8059-629c50c25e87.mock.pstmn.io")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        apiService = retrofit.create(LoginService.class);
+        Call<User> call = apiService.postLogin(user);
+
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                //Si da respuesta lleva a la home
+                bundle = new Bundle();
+                bundle.putParcelable(KEY_USER, user);
+                Intent intent = new Intent(getContext(), HomeActivity.class).putExtra(KEY_USER_BUNDLE, bundle);
+                startActivity(intent);
+                Log.i("Hola", "Siguiente Actividad");
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.e("Error de api", t.getMessage());
+
+            }
+        });
 
     }
 

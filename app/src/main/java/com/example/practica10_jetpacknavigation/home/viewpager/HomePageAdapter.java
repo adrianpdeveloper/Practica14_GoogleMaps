@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.practica10_jetpacknavigation.home.fragments.HomeFragment;
+import com.example.practica10_jetpacknavigation.home.fragments.home_fragment_1.HomeFragment;
 import com.example.practica10_jetpacknavigation.home.fragments.HomeFragment3;
 import com.example.practica10_jetpacknavigation.home.fragments.HomeFragment4;
 import com.example.practica10_jetpacknavigation.home.fragments.home_fragment_2.HomeFragment2;

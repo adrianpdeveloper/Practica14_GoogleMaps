@@ -109,8 +109,9 @@ public class HomeActivity extends AppCompatActivity {
             notificationManagerCompat.notify(1, noBuilder.build());
             }
         }else {
+            //En caso de no tener permisos, los pide
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.POST_NOTIFICATIONS},REQUEST_CODE_POST_NOTIFICATIONS_PERMISSION);
-            Log.i("Info", "Permiso no concedido");
+            showNotification();
         }
 
     }
