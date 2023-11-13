@@ -56,4 +56,5 @@
     <string name="onboarding_content_fragment">onboarding_content_fragment\n</string>
     <string name="login_fragment">login_fragment</string>
     <string name="register_fragment">register_fragment</string>
+    <string name="maps_api_key">AIzaSyCeVOWFnubxzOMJOhvkXMkpgbEt2iihhzM</string>
 </resources>

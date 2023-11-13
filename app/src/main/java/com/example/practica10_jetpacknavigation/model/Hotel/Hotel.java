@@ -1,6 +1,13 @@
 package com.example.practica10_jetpacknavigation.model.Hotel;
 
-public class Hotel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+
+public class Hotel implements Parcelable {
     private int id;
     private String name;
     private int starRating;
@@ -31,6 +38,28 @@ public class Hotel {
         this.isAlternative = isAlternative;
         this.optimizedThumbUrls = optimizedThumbUrls;
     }
+
+    protected Hotel(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        starRating = in.readInt();
+        neighbourhood = in.readString();
+        providerType = in.readString();
+        supplierHotelId = in.readInt();
+        isAlternative = in.readByte() != 0;
+    }
+
+    public static final Creator<Hotel> CREATOR = new Creator<Hotel>() {
+        @Override
+        public Hotel createFromParcel(Parcel in) {
+            return new Hotel(in);
+        }
+
+        @Override
+        public Hotel[] newArray(int size) {
+            return new Hotel[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -126,6 +155,22 @@ public class Hotel {
 
     public void setOptimizedThumbUrls(OptimizedThumbUrls optimizedThumbUrls) {
         this.optimizedThumbUrls = optimizedThumbUrls;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeInt(starRating);
+        parcel.writeString(neighbourhood);
+        parcel.writeString(providerType);
+        parcel.writeInt(supplierHotelId);
+        parcel.writeByte((byte) (isAlternative ? 1 : 0));
     }
 }
 

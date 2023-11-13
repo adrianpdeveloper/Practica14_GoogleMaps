@@ -12,4 +12,7 @@ public class Constants {
     public static final String ON_REGISTER_FRAGMENT ="on_register_fragment";
     public static final String ON_LOGIN_FRAGMENT ="on_login_fragment";
 
+    public static final String GOOGLE_MAPS_HOTEL ="GOOGLE_MAPS_HOTEL";
+    public static final String GOOGLE_MAPS_COORDINATE ="GOOGLE_MAPS_COORDINATE";
+
 }

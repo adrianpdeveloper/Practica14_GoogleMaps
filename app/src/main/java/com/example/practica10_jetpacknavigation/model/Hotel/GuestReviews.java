@@ -1,6 +1,11 @@
 package com.example.practica10_jetpacknavigation.model.Hotel;
 
-public class GuestReviews {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class GuestReviews implements Parcelable {
     private double unformattedRating;
     private String rating;
     private int total;
@@ -19,6 +24,27 @@ public class GuestReviews {
         this.badge = badge;
         this.badgeText = badgeText;
     }
+
+    protected GuestReviews(Parcel in) {
+        unformattedRating = in.readDouble();
+        rating = in.readString();
+        total = in.readInt();
+        scale = in.readInt();
+        badge = in.readString();
+        badgeText = in.readString();
+    }
+
+    public static final Creator<GuestReviews> CREATOR = new Creator<GuestReviews>() {
+        @Override
+        public GuestReviews createFromParcel(Parcel in) {
+            return new GuestReviews(in);
+        }
+
+        @Override
+        public GuestReviews[] newArray(int size) {
+            return new GuestReviews[size];
+        }
+    };
 
     public double getUnformattedRating() {
         return unformattedRating;
@@ -66,5 +92,20 @@ public class GuestReviews {
 
     public void setBadgeText(String badgeText) {
         this.badgeText = badgeText;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeDouble(unformattedRating);
+        parcel.writeString(rating);
+        parcel.writeInt(total);
+        parcel.writeInt(scale);
+        parcel.writeString(badge);
+        parcel.writeString(badgeText);
     }
 }

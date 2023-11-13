@@ -1,6 +1,11 @@
 package com.example.practica10_jetpacknavigation.model.Hotel;
 
-public class Address {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class Address implements Parcelable {
     private String streetAddress;
     private String extendedAddress;
     private String locality;
@@ -9,6 +14,29 @@ public class Address {
     private String countryName;
     private String countryCode;
     private boolean obfuscate;
+
+    protected Address(Parcel in) {
+        streetAddress = in.readString();
+        extendedAddress = in.readString();
+        locality = in.readString();
+        postalCode = in.readString();
+        region = in.readString();
+        countryName = in.readString();
+        countryCode = in.readString();
+        obfuscate = in.readByte() != 0;
+    }
+
+    public static final Creator<Address> CREATOR = new Creator<Address>() {
+        @Override
+        public Address createFromParcel(Parcel in) {
+            return new Address(in);
+        }
+
+        @Override
+        public Address[] newArray(int size) {
+            return new Address[size];
+        }
+    };
 
     public String getStreetAddress() {
         return streetAddress;
@@ -86,5 +114,22 @@ public class Address {
         this.countryName = countryName;
         this.countryCode = countryCode;
         this.obfuscate = obfuscate;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeString(streetAddress);
+        parcel.writeString(extendedAddress);
+        parcel.writeString(locality);
+        parcel.writeString(postalCode);
+        parcel.writeString(region);
+        parcel.writeString(countryName);
+        parcel.writeString(countryCode);
+        parcel.writeByte((byte) (obfuscate ? 1 : 0));
     }
 }
